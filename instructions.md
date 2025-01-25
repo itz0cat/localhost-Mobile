@@ -1,10 +1,14 @@
 # Step 1 - Setup
 Install Termux from trusted sources like [GitHub](https://github.com/termux/termux-app/releases) or [F-Droid](https://f-droid.org/en/packages/com.termux/).
+
 Install Anlinux From [Playstore](https://play.google.com/store/apps/details?id=exa.lnx.a&hl=en_IN&pli=1).
+
 Open AnLinux, navigate to the Dashboard, and select Ubuntu to proceed.
 Then copy the command on your screen their will be a `copy` button. Then press `launch`.
 Paste the command you just copied into Termux.
+
 It will Take a while... propably 30sec - 8min (depending on your network and device i guess)
+
 After done, run ```./start-ubuntu.sh```
  # Step 2 - Install Required Packages
 Run these commands one by one!
@@ -24,9 +28,10 @@ Run these commands one by one!
 7.```apt-get install openjdk-8-jre```
 
 8.```apt-get install openjdk-21-jdk```
-
+# NOTE
 `wget -O minecraft_server.jar (Link of the file)`
-**Do note that you can use a link to PaperMC, or Spigot, or whatever else, just replace the name and the link, for example, `wget -O paper-1.20.4-496.jar (link to paper 1.20.4)`
+
+Do note that you can use a link to PaperMC, or Spigot, or whatever else, just replace the name and the link, for example, `wget -O paper-1.20.4-496.jar (link to paper 1.20.4)`
  
  # Step 3 - Make the file executable
 ```chmod +x minecraft_server.jar```
