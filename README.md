@@ -1,6 +1,6 @@
 # MCServer-Mobile
 
-Ii is made by
+It is made by
 # itz0cat
 
 And remixed from [Pastebin](https://pastebin.com/cqAJDLnF).
