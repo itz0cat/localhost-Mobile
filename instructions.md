@@ -1,67 +1,70 @@
-# Step 1 - Setup
-Install Termux from trusted sources like [GitHub](https://github.com/termux/termux-app/releases) or [F-Droid](https://f-droid.org/en/packages/com.termux/).
 
-Install Anlinux From [Playstore](https://play.google.com/store/apps/details?id=exa.lnx.a&hl=en_IN&pli=1).
+# **Hosting a Minecraft Server on Termux & AnLinux**  
 
-Open AnLinux, navigate to the Dashboard, and select Ubuntu to proceed.
-Then copy the command on your screen their will be a `copy` button. Then press `launch`.
-Paste the command you just copied into Termux.
+## **Step 1 - Setup**  
+1. Install **Termux** from trusted sources like [GitHub](https://github.com/termux/termux-app/releases) or [F-Droid](https://f-droid.org/en/packages/com.termux/).  
+2. Install **AnLinux** from the [Google Play Store](https://play.google.com/store/apps/details?id=exa.lnx.a&hl=en_IN&pli=1).  
+3. Open **AnLinux**, navigate to the **Dashboard**, and select **Ubuntu**.  
+4. Copy the provided command and press **Launch**.  
+5. Open **Termux**, paste the command, and wait for installation to complete (30 sec - 8 min).  
+6. Once done, run:  
+   ```bash
+   ./start-ubuntu.sh
+   ```  
 
-It will Take a while... propably 30sec - 8min (depending on your network and device i guess)
+## **Step 2 - Install Required Packages**  
+Run the following commands **one by one**:  
+```bash
+apt update && apt install -y nano openjdk-17-jre
+```
 
-After done, run ```./start-ubuntu.sh```
- # Step 2 - Install Required Packages
-Run these commands one by one!
- 
-1.```apt update```
+## **Step 3 - Download the Minecraft Server**  
+Replace `<file_link>` with the download link for your server file.  
+```bash
+wget -O minecraft_server.jar <file_link>
+```
+Get `<file_link>` from [PaperMC.md](https://github.com/itz0cat/localhost-Mobile/blob/main/PaperMC.md)
 
-2.```apt-get clean```
+Example for **PaperMC 1.20.4 (Build 499)**:  
+```bash
+wget -O minecraft_server.jar https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/499/downloads/paper-1.20.4-499.jar
+```
 
-3.```apt-get install -y build-essential```
+## **Step 4 - Make the File Executable**  
+```bash
+chmod +x minecraft_server.jar
+```
 
-4.```apt-get install software-properties-common```
+## **Step 5 - Run the Server**  
+Replace `(RAM)` with your desired RAM allocation in GB.  
+Example (using **2GB RAM**):  
+```bash
+java -Xmx2G -Xms2G -jar minecraft_server.jar nogui
+```
+Wait until you see the **EULA warning**.
 
-5.```add-apt-repository ppa:openjdk-r/ppa```
+## **Step 6 - Agree to the EULA**  
+1. Open the EULA file with Nano:  
+   ```bash
+   nano eula.txt
+   ```
+2. Locate `eula=false` and change it to `eula=true`.  
+3. Press `CTRL + X`, then `Y`, and hit `Enter` to save.  
 
-6.```apt-get update```
+## **Step 7 - Run the Server Again**  
+```bash
+java -Xmx2G -Xms2G -jar minecraft_server.jar nogui
+```
 
-7.```apt-get install openjdk-8-jre```
+## **Step 8 - Join the Server**  
+1. Open **PojavLauncher**.  
+2. Click **Multiplayer** → **Add Server**.  
+3. Set the **Server Name** as you like and the **IP Address** as `localhost`.  
+4. Click **Add** and **Join**! 🎮  
 
-8.```apt-get install openjdk-21-jdk```
-# NOTE
-`wget -O minecraft_server.jar (Link of the file)`
+---
 
-Do note that you can use a link to PaperMC, or Spigot, or whatever else, just replace the name and the link, for example, `wget -O paper-1.20.4-496.jar (link to paper 1.20.4)`
- 
- # Step 3 - Make the file executable
-```chmod +x minecraft_server.jar```
-# NOTE
-** if you used paper or whatever else, change `minecraft_server.jar` to whatever else you used, for example, `chmod +x paper-1.20.4-496.jar`
+### **⚠️ Note**  
+This setup is for **local servers only**. It **does not** include port forwarding or online access for friends.  
 
-# Step 4 - Run the sever
-```java -Xmx(MAX RAM AMOUNT) -Xms (MIN RAM AMOUNT) -jar minecraft_server.jar nogui```
-# NOTE 
-If you used paper or whatever else, change "minecraft_server.jar" to whatever else you used, for example, `java -Xmx(RAM AMOUNT) -Xms (RAM AMOUNT) -jar paper-1.20.4-496.jar nogui`
- 
-Let it run until it shows eula warining.
-
-# Setp 5 - Install Nano and agree Eula
- Run the commands one by one. Dont be in hurry :)
-```apt install nano```
-```nano eula.txt```
-
- # Step 6 - Run the server fullly and ENJOY!
-
-Then run
-```java -Xmx(MAX RAM AMOUNT) -Xms (MIN RAM AMOUNT) -jar minecraft_server.jar nogui``` 
-again
-
-**And Done Now You are hosting server on your device! :D** 
-
-To join just open Pojava and click Multiplayer then `Add Server` Set the name as your want and ip is ```localhost``` then click add and then join it.. 
-
-Enjoy :D
-
-# NOTE
-It should be working now, do note that **this tutorial does not show port forwarding and how to show with friends, this is a completely local server**
-#                -END-
+Enjoy your Minecraft server! 🚀
