@@ -3,72 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraft Server Setup</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        pre {
-            background: #ddd;
-            padding: 10px;
-            border-radius: 5px;
-            position: relative;
-        }
-        button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 5px;
-        }
+    <title>Host Minecraft Server on Termux & AnLinux</title>
+      <style>
+       /* 🌸 Cozy Anime Style 🌸 */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sawarabi+Mincho&display=swap');
+
+body {
+    background-color: #f9f3f2;
+    color: #4a4a4a;
+    font-family: 'Sawarabi Mincho', 'Poppins', sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+/* 🌸 Headings */
+h1 {
+    font-size: 32px;
+    color: #d86fa2;
+    background: #fff0f6;
+    padding: 15px;
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(216, 111, 162, 0.2);
+}
+
+h2 {
+    font-size: 24px;
+    color: #d86fa2;
+    margin-top: 20px;
+}
+
+/* 🌸 Paragraphs & Links */
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+}
+
+a {
+    color: #ff6b81;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #ff3b5c;
+}
+
+/* 🌸 Code Blocks */
+pre {
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 5px solid #ff6b81;
+    font-family: monospace;
+    font-size: 16px;
+    display: inline-block;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 🌸 Buttons */
+button {
+    background: #ff6b81;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+button:hover {
+    background: #ff3b5c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(255, 107, 129, 0.3);
+}
+
+/* 🌸 Dropdown (Select) */
+select {
+    background: white;
+    border: 2px solid #ff6b81;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #4a4a4a;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+select:hover {
+    border-color: #ff3b5c;
+}
+
     </style>
+  
 </head>
 <body>
-    <div class="container">
-        <h2>Minecraft Server Setup on Android</h2>
-        <h3>Step 1 - Setup</h3>
-        <p>Run the following command:</p>
-        <pre><code>./start-ubuntu.sh</code> <button onclick="copyText('./start-ubuntu.sh')">📋 Copy</button></pre>
 
-        <h3>Step 2 - Install Required Packages</h3>
-        <p>Run this combined command:</p>
-        <pre><code>apt update && apt-get clean && apt-get install -y build-essential && apt-get install software-properties-common && add-apt-repository ppa:openjdk-r/ppa && apt-get update && apt-get install openjdk-8-jre && apt-get install openjdk-21-jdk</code> 
-        <button onclick="copyText('apt update && apt-get clean && apt-get install -y build-essential && apt-get install software-properties-common && add-apt-repository ppa:openjdk-r/ppa && apt-get update && apt-get install openjdk-8-jre && apt-get install openjdk-21-jdk')">
- 📋 Copy</button></pre>
-        
-        <h3>Step 3 - Download Minecraft Server</h3>
-        <pre><code>wget -O minecraft_server.jar (your_server_file_link)</code> <button onclick="copyText('wget -O minecraft_server.jar (your_server_file_link)')">📋 Copy</button></pre>
+    <h1>Hosting a Minecraft Server on Termux & AnLinux</h1>
 
-        <h3>Step 4 - Make the File Executable</h3>
-        <pre><code>chmod +x minecraft_server.jar</code> <button onclick="copyText('chmod +x minecraft_server.jar')">📋 Copy</button></pre>
-        
-        <h3>Step 5 - Run the Server</h3>
-        <pre><code>java -Xmx(MAX_RAM) -Xms(MIN_RAM) -jar minecraft_server.jar nogui</code> <button onclick="copyText('java -Xmx(MAX_RAM) -Xms(MIN_RAM) -jar minecraft_server.jar nogui')">📋 Copy</button></pre>
-        
-        <h3>Step 6 - Accept EULA</h3>
-        <pre><code>nano eula.txt</code> <button onclick="copyText('nano eula.txt')">📋 Copy</button></pre>
-        
-        <h3>Step 7 - Restart Server</h3>
-        <pre><code>java -Xmx(MAX_RAM) -Xms(MIN_RAM) -jar minecraft_server.jar nogui</code> <button onclick="copyText('java -Xmx(MAX_RAM) -Xms(MIN_RAM) -jar minecraft_server.jar nogui')">📋 Copy</button></pre>
-    </div>
+    <h2>Step 1 - Setup</h2>
+    <p>1. Install <b>Termux</b> from <a href="https://github.com/termux/termux-app/releases">GitHub</a> or <a href="https://f-droid.org/en/packages/com.termux/">F-Droid</a>.</p>
+    <p>2. Install <b>AnLinux</b> from the <a href="https://play.google.com/store/apps/details?id=exa.lnx.a">Google Play Store</a>.</p>
+    <p>3. Open <b>AnLinux</b> → Dashboard → Select <b>Ubuntu</b>.</p>
+    <p>4. Copy the provided command and press <b>Launch</b>.</p>
+    <p>5. Open <b>Termux</b>, paste the command, and wait for installation to complete.</p>
+    <pre>./start-ubuntu.sh</pre>
+    <button onclick="copyToClipboard('./start-ubuntu.sh')">Copy</button>
+
+    <h2>Step 2 - Install Required Packages</h2>
+    <pre>apt update && apt install -y nano openjdk-17-jre</pre>
+    <button onclick="copyToClipboard('apt update && apt install -y nano openjdk-17-jre')">Copy</button>
+
+    <h2>Step 3 - Download the Minecraft Server</h2>
+    <p>Select your Minecraft version:</p>
+    <select id="mcVersion" onchange="updateDownloadCmd()">
+        <option value="https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/130/downloads/paper-1.21.4-130.jar">1.21.4 (Latest)</option>
+        <option value="https://api.papermc.io/v2/projects/paper/versions/1.21.3/builds/82/downloads/paper-1.21.3-82.jar">1.21.3</option>
+        <option value="https://api.papermc.io/v2/projects/paper/versions/1.21.1/builds/132/downloads/paper-1.21.1-132.jar">1.21.1</option>
+        <option value="https://api.papermc.io/v2/projects/paper/versions/1.20.6/builds/151/downloads/paper-1.20.6-151.jar">1.20.6</option>
+        <option value="https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/499/downloads/paper-1.20.4-499.jar">1.20.4</option>
+    </select>
+
+    <pre id="downloadCmd">wget -O minecraft_server.jar https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/130/downloads/paper-1.21.4-130.jar</pre>
+    <button onclick="copyDownloadCmd()">Copy</button>
+
+    <h2>Step 4 - Make the File Executable</h2>
+    <pre>chmod +x minecraft_server.jar</pre>
+    <button onclick="copyToClipboard('chmod +x minecraft_server.jar')">Copy</button>
+
+    <h2>Step 5 - Run the Server</h2>
+    <p>Replace (RAM) with your desired RAM allocation.</p>
+    <pre>java -Xmx2G -Xms2G -jar minecraft_server.jar nogui</pre>
+    <button onclick="copyToClipboard('java -Xmx2G -Xms2G -jar minecraft_server.jar nogui')">Copy</button>
+
+    <h2>Step 6 - Agree to the EULA</h2>
+    <pre>nano eula.txt</pre>
+    <button onclick="copyToClipboard('nano eula.txt')">Copy</button>
+    <p>Change <b>eula=false</b> to <b>eula=true</b> and save.</p>
+
+    <h2>Step 7 - Run the Server Again</h2>
+    <pre>java -Xmx2G -Xms2G -jar minecraft_server.jar nogui</pre>
+    <button onclick="copyToClipboard('java -Xmx2G -Xms2G -jar minecraft_server.jar nogui')">Copy</button>
+
+    <h2>Step 8 - Join the Server</h2>
+    <p>1. Open <b>PojavLauncher</b>.</p>
+    <p>2. Click <b>Multiplayer</b> → <b>Add Server</b>.</p>
+    <p>3. Set the <b>Server Name</b> and the <b>IP Address</b> as <b>localhost</b>.</p>
+    <p>4. Click <b>Add</b> and <b>Join</b>! 🎮</p>
+
+    <h3>⚠️ Note:</h3>
+    <p>This is for <b>local servers only</b>. No port forwarding is included.</p>
 
     <script>
-        function copyText(text) {
-            navigator.clipboard.writeText(text);
-            alert("Copied: " + text);
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Copied to clipboard!");
+            }).catch(err => {
+                console.error("Failed to copy: ", err);
+            });
+        }
+
+        function updateDownloadCmd() {
+            let versionLink = document.getElementById("mcVersion").value;
+            let command = "wget -O minecraft_server.jar " + versionLink;
+            document.getElementById("downloadCmd").innerText = command;
+        }
+
+        function copyDownloadCmd() {
+            let cmdText = document.getElementById("downloadCmd").innerText;
+            copyToClipboard(cmdText);
         }
     </script>
+
 </body>
 </html>
