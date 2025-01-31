@@ -3,184 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Host Minecraft Server on Termux & AnLinux</title>
-      <style>
-       /* 🌸 Cozy Anime Style 🌸 */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sawarabi+Mincho&display=swap');
-
-body {
-    background-color: #f9f3f2;
-    color: #4a4a4a;
-    font-family: 'Sawarabi Mincho', 'Poppins', sans-serif;
-    text-align: center;
-    padding: 20px;
-}
-
-/* 🌸 Headings */
-h1 {
-    font-size: 32px;
-    color: #d86fa2;
-    background: #fff0f6;
-    padding: 15px;
-    border-radius: 12px;
-    display: inline-block;
-    box-shadow: 0 4px 8px rgba(216, 111, 162, 0.2);
-}
-
-h2 {
-    font-size: 24px;
-    color: #d86fa2;
-    margin-top: 20px;
-}
-
-/* 🌸 Paragraphs & Links */
-p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #555;
-}
-
-a {
-    color: #ff6b81;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-a:hover {
-    text-decoration: underline;
-    color: #ff3b5c;
-}
-
-/* 🌸 Code Blocks */
-pre {
-    background: #fff;
-    padding: 10px;
-    border-radius: 8px;
-    border-left: 5px solid #ff6b81;
-    font-family: monospace;
-    font-size: 16px;
-    display: inline-block;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* 🌸 Buttons */
-button {
-    background: #ff6b81;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin-top: 10px;
-    font-family: 'Poppins', sans-serif;
-}
-
-button:hover {
-    background: #ff3b5c;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(255, 107, 129, 0.3);
-}
-
-/* 🌸 Dropdown (Select) */
-select {
-    background: white;
-    border: 2px solid #ff6b81;
-    padding: 8px;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #4a4a4a;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-select:hover {
-    border-color: #ff3b5c;
-}
-
-    </style>
-  
+    <title>Termux Server Guide</title>
+    <link rel="stylesheet" href="style.css"> <!-- External CSS -->
 </head>
 <body>
 
-    <h1>Hosting a Minecraft Server on Termux & AnLinux</h1>
+    <h1>Welcome to Termux Server Guide</h1>
+    <p>Select an option below:</p>
 
-    <h2>Step 1 - Setup</h2>
-    <p>1. Install <b>Termux</b> from <a href="https://github.com/termux/termux-app/releases">GitHub</a> or <a href="https://f-droid.org/en/packages/com.termux/">F-Droid</a>.</p>
-    <p>2. Install <b>AnLinux</b> from the <a href="https://play.google.com/store/apps/details?id=exa.lnx.a">Google Play Store</a>.</p>
-    <p>3. Open <b>AnLinux</b> → Dashboard → Select <b>Ubuntu</b>.</p>
-    <p>4. Copy the provided command and press <b>Launch</b>.</p>
-    <p>5. Open <b>Termux</b>, paste the command, and wait for installation to complete.</p>
-    <pre>./start-ubuntu.sh</pre>
-    <button onclick="copyToClipboard('./start-ubuntu.sh')">Copy</button>
+    <button onclick="location.href='host_server.html'">
+        <img src="https://media.discordapp.net/attachments/1263320364512055328/1334890024449081487/ISXb7j4AAAAAAAAAAAAAAAAA8JfAPHwFvWhx3ywAAAAAElFTkSuQmCC.png?ex=679e2cb6&is=679cdb36&hm=736950b0c5f53f6398ffa6f5a6c03a655cb6134ddd964a65a6e105d9eb770748&=&format=webp&quality=lossless&width=168&height=168" 
+        alt="Host Server" width="50" height="50">
+      <p></p>
+        📡 Host a Minecraft Server
+    </button>
 
-    <h2>Step 2 - Install Required Packages</h2>
-    <pre>apt update && apt install -y nano openjdk-17-jre</pre>
-    <button onclick="copyToClipboard('apt update && apt install -y nano openjdk-17-jre')">Copy</button>
-
-    <h2>Step 3 - Download the Minecraft Server</h2>
-    <p>Select your Minecraft version:</p>
-    <select id="mcVersion" onchange="updateDownloadCmd()">
-        <option value="https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/130/downloads/paper-1.21.4-130.jar">1.21.4 (Latest)</option>
-        <option value="https://api.papermc.io/v2/projects/paper/versions/1.21.3/builds/82/downloads/paper-1.21.3-82.jar">1.21.3</option>
-        <option value="https://api.papermc.io/v2/projects/paper/versions/1.21.1/builds/132/downloads/paper-1.21.1-132.jar">1.21.1</option>
-        <option value="https://api.papermc.io/v2/projects/paper/versions/1.20.6/builds/151/downloads/paper-1.20.6-151.jar">1.20.6</option>
-        <option value="https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/499/downloads/paper-1.20.4-499.jar">1.20.4</option>
-    </select>
-
-    <pre id="downloadCmd">wget -O minecraft_server.jar https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/130/downloads/paper-1.21.4-130.jar</pre>
-    <button onclick="copyDownloadCmd()">Copy</button>
-
-    <h2>Step 4 - Make the File Executable</h2>
-    <pre>chmod +x minecraft_server.jar</pre>
-    <button onclick="copyToClipboard('chmod +x minecraft_server.jar')">Copy</button>
-
-    <h2>Step 5 - Run the Server</h2>
-    <p>Replace (RAM) with your desired RAM allocation.</p>
-    <pre>java -Xmx2G -Xms2G -jar minecraft_server.jar nogui</pre>
-    <button onclick="copyToClipboard('java -Xmx2G -Xms2G -jar minecraft_server.jar nogui')">Copy</button>
-
-    <h2>Step 6 - Agree to the EULA</h2>
-    <pre>nano eula.txt</pre>
-    <button onclick="copyToClipboard('nano eula.txt')">Copy</button>
-    <p>Change <b>eula=false</b> to <b>eula=true</b> and save.</p>
-
-    <h2>Step 7 - Run the Server Again</h2>
-    <pre>java -Xmx2G -Xms2G -jar minecraft_server.jar nogui</pre>
-    <button onclick="copyToClipboard('java -Xmx2G -Xms2G -jar minecraft_server.jar nogui')">Copy</button>
-
-    <h2>Step 8 - Join the Server</h2>
-    <p>1. Open <b>PojavLauncher</b>.</p>
-    <p>2. Click <b>Multiplayer</b> → <b>Add Server</b>.</p>
-    <p>3. Set the <b>Server Name</b> and the <b>IP Address</b> as <b>localhost</b>.</p>
-    <p>4. Click <b>Add</b> and <b>Join</b>! 🎮</p>
-
-    <h3>⚠️ Note:</h3>
-    <p>This is for <b>local servers only</b>. No port forwarding is included.</p>
-
-    <script>
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Copied to clipboard!");
-            }).catch(err => {
-                console.error("Failed to copy: ", err);
-            });
-        }
-
-        function updateDownloadCmd() {
-            let versionLink = document.getElementById("mcVersion").value;
-            let command = "wget -O minecraft_server.jar " + versionLink;
-            document.getElementById("downloadCmd").innerText = command;
-        }
-
-        function copyDownloadCmd() {
-            let cmdText = document.getElementById("downloadCmd").innerText;
-            copyToClipboard(cmdText);
-        }
-    </script>
+    <button onclick="location.href='view_files.html'">
+        <img src="https://media.discordapp.net/attachments/1263320364512055328/1334890182335533067/Z.png?ex=679e2cdc&is=679cdb5c&hm=46395e5472b020d6e6c18c03f8a9b0a139d114fca60b88457b69728d82b4a838&=&format=webp&quality=lossless&width=168&height=168" 
+        alt="View Files" width="50" height="50">
+      <p></p>
+        📂 View Termux Files
+    </button>
 
 </body>
 </html>
