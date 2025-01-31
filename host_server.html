@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host Minecraft Server on Termux & AnLinux</title>
+    <link rel="stylesheet" href="style.css"> <!-- External CSS -->
+</head>
+<body>
+
+    <h1>Hosting a Minecraft Server on Termux & AnLinux</h1>
+
+    <h2>Step 1 - Setup</h2>
+    <p>1. Install <b>Termux</b> from <a href="https://github.com/termux/termux-app/releases">GitHub</a> or <a href="https://f-droid.org/en/packages/com.termux/">F-Droid</a>.</p>
+    <p>2. Install <b>AnLinux</b> from the <a href="https://play.google.com/store/apps/details?id=exa.lnx.a">Google Play Store</a>.</p>
+    <p>3. Open <b>AnLinux</b> → Dashboard → Select <b>Ubuntu</b>.</p>
+    <p>4. Copy the provided command and press <b>Launch</b>.</p>
+    <p>5. Open <b>Termux</b>, paste the command, and wait for installation to complete.</p>
+    <pre>./start-ubuntu.sh</pre>
+    <button onclick="copyToClipboard('./start-ubuntu.sh')">Copy</button>
+
+    <h2>Step 2 - Install Required Packages</h2>
+    <pre>apt update && apt install -y nano openjdk-17-jre</pre>
+    <button onclick="copyToClipboard('apt update && apt install -y nano openjdk-17-jre')">Copy</button>
+
+    <h2>Step 3 - Download the Minecraft Server</h2>
+    <p>Select your Minecraft version:</p>
+    <select id="mcVersion" onchange="updateDownloadCmd()">
+        <option value="https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/130/downloads/paper-1.21.4-130.jar">1.21.4 (Latest)</option>
+        <option value="https://api.papermc.io/v2/projects/paper/versions/1.20.4/builds/499/downloads/paper-1.20.4-499.jar">1.20.4</option>
+        <option value="https://api.papermc.io/v2/projects/paper/versions/1.19.4/builds/550/downloads/paper-1.19.4-550.jar">1.19.4</option>
+        <option value="https://api.papermc.io/v2/projects/paper/versions/1.18.2/builds/388/downloads/paper-1.18.2-388.jar">1.18.2</option>
+      <option value="https://api.papermc.io/v2/projects/paper/versions/1.8.8/builds/445/downloads/paper-1.8.8-445.jar  ">1.8.8</option>
+    </select>
+  <p></p>
+    <pre id="downloadCmd">wget -O minecraft_server.jar https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/130/downloads/paper-1.21.4-130.jar</pre>
+    <button onclick="copyToClipboard(document.getElementById('downloadCmd').innerText)">Copy</button>
+
+    <h2>Step 4 - Make the File Executable</h2>
+    <pre>chmod +x minecraft_server.jar</pre>
+    <button onclick="copyToClipboard('chmod +x minecraft_server.jar')">Copy</button>
+
+    <h2>Step 5 - Run the Server</h2>
+    <p>Replace (RAM) with your desired RAM allocation.</p>
+    <pre>java -Xmx2G -Xms2G -jar minecraft_server.jar nogui</pre>
+    <button onclick="copyToClipboard('java -Xmx2G -Xms2G -jar minecraft
